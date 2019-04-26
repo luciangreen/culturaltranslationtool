@@ -12,6 +12,13 @@ NB. - Because of a limitation in Google Translate, CTT only improves, not perfec
 Languages available
 See https://cloud.google.com/translate/docs/languages
 
+Installation
+
+Copy the files into your chosen folder
+Replace the string /Users/luciangreen/Dropbox/Program Finder/possibly not working/translationmanagementsystem/Cultural Translation Tool-19XXXXXXb4.json with your Google Translate API path and the string /Users/luciangreen/Dropbox/Program\\ Finder/possibly\\ not\\ working/translationmanagementsystem/google-cloud-sdk/ with the path to your Google Translate folder.
+
+Create a tmp folder in the folder
+
 Instructions
 
 Enter the from and to language codes and the sentences to be translated in ctt-input.txt before running, e.g.:
