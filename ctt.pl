@@ -409,9 +409,9 @@ swap1(A,B) :- string_codes("'",[A]),string_codes(" ",[B]),!.
 swap1(A,A) :- !.
 
 translate(Input,FromLang,ToLang,Output3) :-
-	swap_quote_to_space(Input,Input1),
-	%%insertdoublebackslashbeforequote(Input1,Input),
-	concat_list(["../../../trans ",FromLang,":",ToLang," '",Input1,"'"],F),
+	%%swap_quote_to_space(Input,Input1),
+	insertdoublebackslashbeforequote(Input,Input1),
+	concat_list(["../../../trans ",FromLang,":",ToLang," \"",Input1,"\""],F),
 	%%atom_concat("export GOOGLE_APPLICATION_CREDENTIALS=\"/Users/luciangreen/Dropbox/Program Finder/possibly not working/translationmanagementsystem/Cultural Translation Tool-19XXXXXXb4.json\"\ncurl -s -X POST -H \"Content-Type: application/json\" -H \"Authorization: Bearer \"$(/Users/luciangreen/Dropbox/Program\\ Finder/possibly\\ not\\ working/translationmanagementsystem/google-cloud-sdk/bin/gcloud auth application-default print-access-token)     --data \"{
 /**
   'q': '",Input,A),
