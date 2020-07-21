@@ -402,6 +402,33 @@ bash_command(Command, Output) :-
         read_string(Out, _, Output),
         close(Out)).
         
+        translate(Input1,FromLang,ToLang,Output3) :-
+	%%insertdoublebackslashbeforequote(Input1,Input),
+	concat_list(["../../trans ",FromLang,":",ToLang," '",Input1,"'"],F),
+	%%atom_concat("export GOOGLE_APPLICATION_CREDENTIALS=\"/Users/luciangreen/Dropbox/Program Finder/possibly not working/translationmanagementsystem/Cultural Translation Tool-19XXXXXXb4.json\"\ncurl -s -X POST -H \"Content-Type: application/json\" -H \"Authorization: Bearer \"$(/Users/luciangreen/Dropbox/Program\\ Finder/possibly\\ not\\ working/translationmanagementsystem/google-cloud-sdk/bin/gcloud auth application-default print-access-token)     --data \"{
+/**
+  'q': '",Input,A),
+	atom_concat(A,"',
+  'source': '",B),
+	atom_concat(B,FromLang,C),
+	atom_concat(C,"',
+  'target': '",D),
+	atom_concat(D,ToLang,E),
+	atom_concat(E,"',
+  'format': 'text'
+}\" \"https://translation.googleapis.com/language/translate/v2\"",F),
+**/
+	bash_command(F,Output1),
+	split_string(Output1,"\n\r","\n\r",Output2),
+	Output2=[_,Output3a|_], %% *** May be 3rd item on Linux
+	%%atom_concat("{\n  \"data\": {\n    \"translations\": [\n      {\n        \"translatedText\": \"",A1,Output1),atom_concat(Output2,"\"\n      }\n    ]\n  }\n}\n",A1),	
+	atom_string(Output3a,Output3b),
+		string_concat("\033\[1m",Output3c,Output3b),
+		string_concat(Output3,"\033\[22m",Output3c)
+.
+
+/**
+
 translate(Input1,FromLang,ToLang,Output3) :-
 	insertdoublebackslashbeforequote(Input1,Input),
 	atom_concat("export GOOGLE_APPLICATION_CREDENTIALS=\"/Users/luciangreen/Dropbox/Program Finder/possibly not working/translationmanagementsystem/Cultural Translation Tool-19XXXXXXb4.json\"\ncurl -s -X POST -H \"Content-Type: application/json\" -H \"Authorization: Bearer \"$(/Users/luciangreen/Dropbox/Program\\ Finder/possibly\\ not\\ working/translationmanagementsystem/google-cloud-sdk/bin/gcloud auth application-default print-access-token)     --data \"{
@@ -418,7 +445,8 @@ translate(Input1,FromLang,ToLang,Output3) :-
 	bash_command(F,Output1),
 	atom_concat("{\n  \"data\": {\n    \"translations\": [\n      {\n        \"translatedText\": \"",A1,Output1),atom_concat(Output2,"\"\n      }\n    ]\n  }\n}\n",A1),	
 	atom_string(Output2,Output3).
-
+	
+	**/
 insertdoublebackslashbeforequote(Input1,Input) :-
 	string_codes(Input1,Input2),
 	insertdoublebackslashbeforequote1(Input2,[],Input3),
@@ -509,6 +537,7 @@ backtranslateuntilcorrect([['I love you.','I dote on you.']],[['I dote on you.',
 
 **/
 backtranslateuntilcorrect(List1,List2,Orig,PastTries,FromLang,ToLang,E,H,Notification1,Notification2,Output) :- 
+trace,
 	(
 		phrase_from_file(string(List6),E),
 		(phrase(file1(Outputs11),List6),
@@ -866,3 +895,13 @@ back-translation ready at this stage
 
 
 %% List=[o1 o2]1, List4=[o2 l]1,String4=[o2* l]2 where Word3 is o12
+
+concat_list(A1,B):-
+	A1=[A|List],
+	concat_list(A,List,B),!.
+
+concat_list(A,[],A):-!.
+concat_list(A,List,B) :-
+	List=[Item|Items],
+	string_concat(A,Item,C),
+	concat_list(C,Items,B).

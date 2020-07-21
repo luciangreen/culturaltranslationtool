@@ -1,1 +1,0 @@
-%%% To use Cultural Translation Tool, sign up for Google Translate API, and insert your .json file name in ctt.pl in the correct place.

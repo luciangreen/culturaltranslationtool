@@ -45,16 +45,18 @@ rungrammarly.
 open_grammar_editor(Word,FromLang,ToLang,List,List4,String4,N,COO2) :-
 	%%downcase_atom(Word, Word2), atom_string(Word2,Word),
 	
-	prolog_edit:locate("/Applications/Grammarly.app/Contents/MacOS/Grammarly",F,_L),
+	%%prolog_edit:locate("/Applications/Grammarly.app/Contents/MacOS/Grammarly",F,_L),
 	%% prolog_edit:locate("/usr/bin/vi",F,_L),
-	arg(1,F,A),
-	atom_concat(A, ' ',C),
+	%%arg(1,F,A),
+	%%atom_concat("edit(\"", ' ',C),
 	
 	atom_concat('tmp/ctt-orig1-orig2-tmp-',N,D),
 	atom_concat(D, '.txt',E),
 	
-	atom_concat(C,E,G),
-	atom_concat(G, ' --line',H),
+	atom_string(E,H),
+	
+	%% atom_concat("edit(\"",E,G),
+	%% atom_concat(G, '\").',H),
  	
  	%%fulladjective(FromLang,FromLang1),
  	

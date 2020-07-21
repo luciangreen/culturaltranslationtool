@@ -1,1 +1,1 @@
-[[[en],[es],[[I adore you.],[Te adoro.]]],[[en],[es],[[The second variable is equal to the first variable with one added.],[La segunda variable es igual a la primera variable con una añadida.]]],[[en],[fr],[[I love you.],[Je vous adore.]]],[[en],[fr],[[The second variable is equal to the first variable plus one.],[La deuxième variable est égale à la première variable plus un.]]]]
+[["en","es","I adore you.","Te adoro."]]
