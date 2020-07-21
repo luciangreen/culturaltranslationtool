@@ -25,7 +25,7 @@ Create a tmp folder in the folder.
 
 Install Translation Shell on Mac
 Change line in ctt.pl
-`concat_list(["../../trans ",FromLang,":",ToLang," '",Input1,"'"],F),` to correct location of trans.
+`concat_list(["../../../trans ",FromLang,":",ToLang," '",Input1,"'"],F),` to correct location of trans.
 
 You may need to install gawk using Homebrew.
 

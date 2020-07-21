@@ -404,7 +404,7 @@ bash_command(Command, Output) :-
         
         translate(Input1,FromLang,ToLang,Output3) :-
 	%%insertdoublebackslashbeforequote(Input1,Input),
-	concat_list(["../../trans ",FromLang,":",ToLang," '",Input1,"'"],F),
+	concat_list(["../../../trans ",FromLang,":",ToLang," '",Input1,"'"],F),
 	%%atom_concat("export GOOGLE_APPLICATION_CREDENTIALS=\"/Users/luciangreen/Dropbox/Program Finder/possibly not working/translationmanagementsystem/Cultural Translation Tool-19XXXXXXb4.json\"\ncurl -s -X POST -H \"Content-Type: application/json\" -H \"Authorization: Bearer \"$(/Users/luciangreen/Dropbox/Program\\ Finder/possibly\\ not\\ working/translationmanagementsystem/google-cloud-sdk/bin/gcloud auth application-default print-access-token)     --data \"{
 /**
   'q': '",Input,A),
@@ -419,12 +419,12 @@ bash_command(Command, Output) :-
 }\" \"https://translation.googleapis.com/language/translate/v2\"",F),
 **/
 	bash_command(F,Output1),
-	split_string(Output1,"\n\r","\n\r",Output2),
+	split_string(Output1,"\033","\033",Output2),
 	Output2=[_,Output3a|_], %% *** May be 3rd item on Linux
 	%%atom_concat("{\n  \"data\": {\n    \"translations\": [\n      {\n        \"translatedText\": \"",A1,Output1),atom_concat(Output2,"\"\n      }\n    ]\n  }\n}\n",A1),	
 	atom_string(Output3a,Output3b),
-		string_concat("\033\[1m",Output3c,Output3b),
-		string_concat(Output3,"\033\[22m",Output3c)
+		string_concat("[1m",Output3,Output3b)
+		%%string_concat(Output3,"\033\[22m",Output3c)
 .
 
 /**
