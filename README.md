@@ -21,7 +21,6 @@ See https://cloud.google.com/translate/docs/languages
 Installation
 
 Copy the files into your chosen folder.
-Create a tmp folder in the folder.
 
 Install Translation Shell on Mac
 Change line in ctt.pl
