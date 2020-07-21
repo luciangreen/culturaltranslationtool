@@ -23,7 +23,8 @@ Installation
 Copy the files into your chosen folder.
 Create a tmp folder in the folder.
 
-Install Translate Shell on Mac in the same folder as the algorithm (NB. won't work otherwise).
+Change line in ctt.pl
+`concat_list(["../../trans ",FromLang,":",ToLang," '",Input1,"'"],F),` to correct location of trans.
 
 You may need to install gawk using Homebrew.
 

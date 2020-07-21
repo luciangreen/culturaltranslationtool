@@ -1,1 +1,1 @@
-["en","fr","The second variable is equal to the first variable with one added. I adore you."]
+[[en],[de],[The third variable is equal to the second variable with one added. I adore you.]]
