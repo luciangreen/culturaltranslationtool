@@ -537,7 +537,7 @@ backtranslateuntilcorrect([['I love you.','I dote on you.']],[['I dote on you.',
 
 **/
 backtranslateuntilcorrect(List1,List2,Orig,PastTries,FromLang,ToLang,E,H,Notification1,Notification2,Output) :- 
-trace,
+%%trace,
 	(
 		phrase_from_file(string(List6),E),
 		(phrase(file1(Outputs11),List6),
