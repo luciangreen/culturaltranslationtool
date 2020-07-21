@@ -402,7 +402,14 @@ bash_command(Command, Output) :-
         read_string(Out, _, Output),
         close(Out)).
         
-        translate(Input1,FromLang,ToLang,Output3) :-
+
+swap_quote_to_space(A,B) :-
+	string_codes(A,C),findall(D,(member(C1,C),swap1(C1,D)),E),string_codes(B,E),!.
+swap1(A,B) :- string_codes("'",[A]),string_codes(" ",[B]),!.
+swap1(A,A) :- !.
+
+translate(Input,FromLang,ToLang,Output3) :-
+	swap_quote_to_space(Input,Input1),
 	%%insertdoublebackslashbeforequote(Input1,Input),
 	concat_list(["../../../trans ",FromLang,":",ToLang," '",Input1,"'"],F),
 	%%atom_concat("export GOOGLE_APPLICATION_CREDENTIALS=\"/Users/luciangreen/Dropbox/Program Finder/possibly not working/translationmanagementsystem/Cultural Translation Tool-19XXXXXXb4.json\"\ncurl -s -X POST -H \"Content-Type: application/json\" -H \"Authorization: Bearer \"$(/Users/luciangreen/Dropbox/Program\\ Finder/possibly\\ not\\ working/translationmanagementsystem/google-cloud-sdk/bin/gcloud auth application-default print-access-token)     --data \"{
@@ -418,14 +425,23 @@ bash_command(Command, Output) :-
   'format': 'text'
 }\" \"https://translation.googleapis.com/language/translate/v2\"",F),
 **/
-	bash_command(F,Output1),
+repeat,
+
+catch(
+	(bash_command(F,Output1)),
+   _,
+	(writeln("Translate failed.  Press c to retry."),
+	read_string(user_input, "\n", "\r", _,C),
+	C="c"->fail;abort)
+),
+
 	split_string(Output1,"\033","\033",Output2),
 	Output2=[_,Output3a|_], %% *** May be 3rd item on Linux
 	%%atom_concat("{\n  \"data\": {\n    \"translations\": [\n      {\n        \"translatedText\": \"",A1,Output1),atom_concat(Output2,"\"\n      }\n    ]\n  }\n}\n",A1),	
 	atom_string(Output3a,Output3b),
-		string_concat("[1m",Output3,Output3b)
+		string_concat("[1m",Output3,Output3b),
 		%%string_concat(Output3,"\033\[22m",Output3c)
-.
+!.
 
 /**
 
