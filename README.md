@@ -22,8 +22,10 @@ Installation
 
 Copy the files into your chosen folder.
 Create a tmp folder in the folder.
-Replace the string /Users/luciangreen/Dropbox/Program Finder/possibly not working/translationmanagementsystem/Cultural Translation Tool-19XXXXXXb4.json with your Google Translate API path and the string /Users/luciangreen/Dropbox/Program\\ Finder/possibly\\ not\\ working/translationmanagementsystem/google-cloud-sdk/ with the path to your Google Translate folder.
 
+Install Translate Shell on Mac in the same folder as the algorithm (NB. won't work otherwise).
+
+You may need to install gawk using Homebrew.
 
 
 Instructions
