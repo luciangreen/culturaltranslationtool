@@ -1,7 +1,7 @@
 # culturaltranslationtool
 Cultural Translation Tool (CTT)
 
-I was inspired to write CTT when I worked out to back-translate in Homework Help Club to reach a "more" correct translation.  CTT gives better translations (and can be modified to give back translations, the translation back into the original language).  This tool can help businesses expand to other languages.  Requires Google Translate API and Grammarly (Premium) or MacVim on Mac (which I have tested it for).  If you back translate and you think the sentence either isn't grammatical or has the same meaning as the original, you can keep trying new variants, where the CTT saves the correct one.
+I was inspired to write CTT when I worked out to back-translate in Homework Help Club to reach a "more" correct translation.  CTT gives better translations (and can be modified to give back translations, the translation back into the original language).  This tool can help businesses expand to other languages.  Requires Google Translate Shell and Grammarly (Premium) or MacVim on Mac (which I have tested it for).  If you back translate and you think the sentence either isn't grammatical or has the same meaning as the original, you can keep trying new variants, where the CTT saves the correct one.
 
 Sentences are back-translated and saved in ctt-output.txt with the spaces and returns from the original.
 
