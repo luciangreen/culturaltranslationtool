@@ -269,7 +269,8 @@ entry([Word1,Word2,Word3,Word4]) -->
             "[",sentence1(Word44), "]","]", {string_codes(Word4,Word44),string(Word4)},
            "]",!.
 
-sentence1([X|Xs]) --> [X], {((char_type(X,alnum);char_type(X,white));char_type(X,punct)), not(X=93)
+sentence1([X|Xs]) --> [X], {((true%%char_type(X,alnum)
+;char_type(X,white));char_type(X,punct)), not(X=93)
 %% ]
 , not(X=91)
 %% [
@@ -336,7 +337,8 @@ returns('') --> [].
 
 
 %% sentence33([C|Xs])
-sentence33(CXs) --> [X], {((char_type(X,alnum);char_type(X,white));char_type(X,punct)), not(X=93),char_code(C,X)
+sentence33(CXs) --> [X], {((true%%char_type(X,alnum)
+;char_type(X,white));char_type(X,punct)), not(X=93),char_code(C,X)
 %% ]
 , not(X=91)
 
