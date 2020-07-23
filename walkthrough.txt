@@ -21,9 +21,10 @@ Enter 1-1, or 0 for none:
 |: 0
 <<<Note: Edit a pair and delete the stub, or insert a pair as follows.  Save at path tmp/ctt-orig1-orig2-tmp-1.txt using the menu>>>
 Opening editor.
-.
-.
-.
+
+
+[[[<<<Note: Edit a pair and delete the stub, or insert a pair as follows.  Save at path tmp/ctt-orig1-orig2-tmp-1.txt using the menu>>>],[The second variable is equal to the first variable plus one.]],[[[<<<History of tries:>>>],[]],[[The second variable is equal to the first variable plus one.],[]]],[[[The second variable is equal to the first variable plus one.],[The second variable is equal to the first variable plus the number one.]]]]
+
 
 Which of the following sentences:
 - are grammatical
