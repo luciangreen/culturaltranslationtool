@@ -1,0 +1,41 @@
+?- ctt.
+Number of sentences to translate in files/ctt-input.txt: 1
+Number of unique sentences to translate in files/ctt-input.txt: 1
+Number of back-translation pairs in lang1->lang2: 0
+Number of translation pairs in lang1->lang2: 0
+Number of back-translations remaining to define: 1
+Number of undefined back-translations: 0
+Number of orphaned translations: 0
+
+Which of the following sentences:
+- are grammatical
+- have the same meaning as the other in the pair, and
+- have the same meaning as the original sentence?
+
+Original:	The second variable is equal to the first variable plus one.
+
+1		The second variable is equal to the first variable plus one.
+		The second variable equals the first variable and one variable.
+
+Enter 1-1, or 0 for none:
+|: 0
+<<<Note: Edit a pair and delete the stub, or insert a pair as follows.  Save at path tmp/ctt-orig1-orig2-tmp-1.txt using the menu>>>
+Opening editor.
+.
+.
+.
+One of the two will be used. Which one is undefined.
+
+Which of the following sentences:
+- are grammatical
+- have the same meaning as the other in the pair, and
+- have the same meaning as the original sentence?
+
+Original:	The second variable is equal to the first variable plus one.
+
+1		The second variable is equal to the first variable plus the number one.
+		The second variable equals the first variable and the number one.
+
+Enter 1-1, or 0 for none:
+|: 1
+true.
