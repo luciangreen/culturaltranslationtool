@@ -24,7 +24,6 @@ Opening editor.
 .
 .
 .
-One of the two will be used. Which one is undefined.
 
 Which of the following sentences:
 - are grammatical
