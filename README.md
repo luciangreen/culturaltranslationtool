@@ -49,3 +49,5 @@ Copy the contents into the file in BBEdit (ensure it is saved before the next st
 <img width="1149" alt="Screen Shot 2020-07-21 at 3 56 47 pm" src="https://user-images.githubusercontent.com/15845542/88051178-8c27a800-cb9b-11ea-97c4-d127db3f75a5.png">
 Quit Grammarly:
 <img width="32" alt="Screen Shot 2020-07-21 at 3 58 00 pm" src="https://user-images.githubusercontent.com/15845542/88051181-8df16b80-cb9b-11ea-9a26-5cab913ef960.png">
+
+See <a href="https://github.com/luciangreen/culturaltranslationtool/edit/master/walkthrough.txt">walkthrough.txt</a>.
