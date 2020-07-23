@@ -10,7 +10,7 @@ NB. - Because of a limitation in Google Translate, CTT only improves, not perfec
 - Please remember that Google Translate translates by translating from English first.
 
 Languages available
-See https://cloud.google.com/translate/docs/languages
+See <a href="https://github.com/soimort/translate-shell">trans</a>.
 
 
 # Installation from List Prolog Package Manager (LPPM)
@@ -24,7 +24,7 @@ Copy the files into your chosen folder.
 
 Install Translation Shell on Mac
 Change line in ctt.pl
-`concat_list(["../../../trans ",FromLang,":",ToLang," '",Input1,"'"],F),` to correct location of trans.
+`concat_list(["../../../trans ",FromLang,":",ToLang," '",Input1,"'"],F),` to correct location of <a href="https://github.com/soimort/translate-shell">trans</a>.
 
 You may need to install gawk using Homebrew.
 
