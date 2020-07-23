@@ -50,4 +50,4 @@ Copy the contents into the file in BBEdit (ensure it is saved before the next st
 Quit Grammarly:
 <img width="32" alt="Screen Shot 2020-07-21 at 3 58 00 pm" src="https://user-images.githubusercontent.com/15845542/88051181-8df16b80-cb9b-11ea-9a26-5cab913ef960.png">
 
-See <a href="https://github.com/luciangreen/culturaltranslationtool/edit/master/walkthrough.txt">walkthrough.txt</a>.
+See <a href="https://github.com/luciangreen/culturaltranslationtool/edit/master/walkthrough.txt">walkthrough.txt</a>. (It is a different example.)
