@@ -28,7 +28,7 @@ Installation
 Copy the files into your chosen folder.
 
 Install <a href="https://github.com/soimort/translate-shell">Translation Shell</a> on Mac, etc.
-Change line in ctt.pl
+Change line in culturaltranslationtool/ctt.pl
 `concat_list(["../../../trans ",FromLang,":",ToLang," '",Input1,"'"],F),` to correct location of <a href="https://github.com/soimort/translate-shell">trans</a>.
 
 You may need to install gawk using Homebrew.
