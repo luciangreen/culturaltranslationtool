@@ -429,13 +429,17 @@ translate(Input,FromLang,ToLang,Output3) :-
 **/
 repeat,
 
+catch(call_with_time_limit(5,
 catch(
 	(bash_command(F,Output1)),
    _,
 	(writeln("Translate failed.  Press c to retry."),
 	read_string(user_input, "\n", "\r", _,C),
 	C="c"->fail;abort)
+)
 ),
+      time_limit_exceeded,
+      (writeln1("Error: translate timed out."),abort)),
 
 	split_string(Output1,"\033","\033",Output2),
 	Output2=[_,Output3a|_], %% *** May be 3rd item on Linux
