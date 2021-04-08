@@ -9,41 +9,53 @@ NB. - Because of a limitation in Google Translate, CTT only improves, not perfec
 - Sentences in texts given should not contain a full stop except at the end, but you can put them back in afterwards.
 - Please remember that Google Translate translates by translating from English first.
 
-Languages available
-See <a href="https://github.com/soimort/translate-shell">Translation Shell</a>.
+# Prerequisites
 
+* Please download and install SWI-Prolog for your machine at `https://www.swi-prolog.org/build/`.
 
-# Installation from List Prolog Package Manager (LPPM)
+* You may need to install gawk using Homebrew.
 
-* Optionally, you can install from LPPM by installing <a href="https://www.swi-prolog.org/build/">SWI-Prolog</a> for your machine, downloading the <a href="https://github.com/luciangreen/List-Prolog-Package-Manager">LPPM Repository</a>,
+* Install <a href="https://github.com/soimort/translate-shell">Translation Shell</a> on Mac, etc.
+Change line in
+```
+culturaltranslationtool/ctt.pl
+concat_list(["../../../trans ",FromLang,":",ToLang," '",Input1,"'"],F),
+```
+to correct location of <a href="https://github.com/soimort/translate-shell">trans</a>.
+
+* Install (free) <a href="https://app.grammarly.com/">Grammarly</a> (Premium costs money).
+
+# 1. Install manually
+
+Download <a href="http://github.com/luciangreen/culturaltranslationtool/">this repository</a>.
+
+# 2. Or Install from List Prolog Package Manager (LPPM)
+
+* Download the <a href="https://github.com/luciangreen/List-Prolog-Package-Manager">LPPM Repository</a>:
+
 ```
 git clone https://github.com/luciangreen/List-Prolog-Package-Manager.git
 cd List-Prolog-Package-Manager
 swipl
+['lppm'].
+lppm_install("luciangreen","culturaltranslationtool")
+halt
 ```
-loading LPPM with `['lppm'].` then installing the package by running `lppm_install("luciangreen","culturaltranslationtool").`. Requires the additional parts below.
 
+# Running
 
-Installation
-
-Copy the files into your chosen folder.
-
-Install <a href="https://github.com/soimort/translate-shell">Translation Shell</a> on Mac, etc.
-Change line in culturaltranslationtool/ctt.pl
-`concat_list(["../../../trans ",FromLang,":",ToLang," '",Input1,"'"],F),` to correct location of <a href="https://github.com/soimort/translate-shell">trans</a>.
-
-You may need to install gawk using Homebrew.
-
-Install (free) <a href="https://app.grammarly.com/">Grammarly</a> (Premium costs money).
+* In Shell:
+`cd culturaltranslationtool`
+`swipl`
 
 Instructions
 
-Enter the from and to language codes and the sentences to be translated in ctt-input.txt before running, e.g.:
-[[en],[fr],[The second variable is equal to the first variable with one added. I adore you.]]
+Enter the from and to language codes and the sentences to be translated in `ctt-input.txt` before running, e.g.:
+`[[en],[fr],[The second variable is equal to the first variable with one added. I adore you.]]`
 
-Load in SWI-Prolog using [ctt]. and [edit]., then run using ctt.
+Load in SWI-Prolog using `[ctt].` and `[edit].`, then run using `ctt.`.
 
-Follow the prompts asking for modifications to a possible back translation and whether a non-identical back translated sentence from the original is grammatical and has the same meaning as the original.  You can save time using CTT instead of Google Translate because CTT uses translations with identical back translations without asking.  Web site and document translations can be automated, using the saved back translations, where I recommend entering short sentences that are more likely to translate correctly and which you can reuse in other documents.  You can save the ctt-orig1-orig2.txt (original language from input to original language with the correct back translation) and ctt-orig-tran.txt (back translation to translation) files separately for a particular document for fast translation into multiple languages.
+Follow the prompts asking for modifications to a possible back translation and whether a non-identical back translated sentence from the original is grammatical and has the same meaning as the original.  You can save time using CTT instead of Google Translate because CTT uses translations with identical back translations without asking.  Web site and document translations can be automated, using the saved back translations, where I recommend entering short sentences that are more likely to translate correctly and which you can reuse in other documents.  You can save the `ctt-orig1-orig2.txt` (original language from input to original language with the correct back translation) and `ctt-orig-tran.txt` (back translation to translation) files separately for a particular document for fast translation into multiple languages.
 
 * Instructions for using Grammarly
 NB. The algorithm will open Grammarly by itself when you need to enter a new suggestion to translate.  Import the file in the tmp folder.  Select text to correct as shown:
