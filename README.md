@@ -18,7 +18,7 @@ NB. - Because of a limitation in Google Translate, CTT only improves, not perfec
 * Install <a href="https://github.com/soimort/translate-shell">Translation Shell</a> on Mac, etc.
 Change line in
 ```
-culturaltranslationtool/ctt.pl
+culturaltranslationtool/ctt2.pl
 trans_location("../../../gawk/trans").
 ```
 to correct location of <a href="https://github.com/soimort/translate-shell">trans</a>.
@@ -51,7 +51,7 @@ Instructions
 Enter the from and to language codes and the sentences to be translated in `ctt-input.txt` before running, e.g.:
 `[["en"],["fr"],["The second variable is equal to the first variable with one added. I adore you."]]`
 
-Load in SWI-Prolog using `['ctt2.pl'].` and `['../listprologinterpreter/listprolog.pl'].`, then run using `ctt2.`.
+Load in SWI-Prolog using `['../listprologinterpreter/listprolog.pl'].`, then run using `ctt2.`.
 
 Follow the prompts asking for modifications to a possible back translation and whether a non-identical back translated sentence from the original is grammatical and has the same meaning as the original.  You can save time using CTT instead of Google Translate because CTT uses translations with identical back translations without asking.  Web site and document translations can be automated, using the saved back translations, where I recommend entering short sentences that are more likely to translate correctly and which you can reuse in other documents.  You can save the `ctt-orig1-orig2.txt` (original language from input to original language with the correct back translation) and `ctt-orig-tran.txt` (back translation to translation) files separately for a particular document for fast translation into multiple languages.
 

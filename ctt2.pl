@@ -101,11 +101,13 @@ bash_command(Command, Output) :-
         read_string(Out, _, Output),
         close(Out)).
 
+/*
 translate_ctt2("Hello.","en","fr","Bonjour.").
 translate_ctt2("Bonjour.","fr","en","Hello.").
 
 translate_ctt2("Helloc.","en","fr","Hellod.").
 translate_ctt2("Hellod.","fr","en","Helloc.").
+*/
 
 translate_ctt2(Input,FromLang,ToLang,Output3) :-
 	trans_location(Trans_location),
