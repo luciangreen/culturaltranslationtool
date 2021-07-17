@@ -1,1 +1,1 @@
-[[en],[gd],[The second variable is equal to the first variable plus one.]]
+["en","fr","Hello."]
