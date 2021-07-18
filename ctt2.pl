@@ -40,11 +40,18 @@ save_file(File_path,File) :-
 get_files(Item4,Ctt_orig1_orig2,Ctt_orig_tran,From_lang,To_lang) :-
 	get_file("files/ctt-input.txt",Ctt_input),
 	Ctt_input=[From_lang,To_lang,String1],
-	split_string2(String1,["\n","\r"],List1),
+	%split_string2(String1,["\n","\r"],List1),
+	string_codes(String1,Codes1),
+	split_on_substring117(Codes1,`\n\r`,[],List1),
 	%trace,
 	findall(Item2,(member(Item1,List1),
 	((Item1="\n"->true;Item1="\r")->Item2=[Item1];(
-	split_string2(Item1,[".","!","?"],Item11),join_chars_after(Item11,[".","!","?"],[],Item2))
+%trace,
+	string_codes(Item1,Codes2),
+	split_on_substring117(Codes2,`.!?`,[],Item11),
+
+%split_string2(Item1,[".","!","?"],Item11),
+join_chars_after(Item11,[".","!","?"],[],Item2))
 )),Item3),
 	maplist(append,[Item3],[Item4]),
 	findall(Item5,(member(Item5,Item4),not(((Item5="\n"->true;Item5="\r")))),Item6),
