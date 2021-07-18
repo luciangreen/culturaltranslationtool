@@ -37,7 +37,7 @@ save_file(File_path,File) :-
 	close(Stream1)),!.
 
 
-get_files(Item6,Ctt_orig1_orig2,Ctt_orig_tran,From_lang,To_lang) :-
+get_files(Item4,Ctt_orig1_orig2,Ctt_orig_tran,From_lang,To_lang) :-
 	get_file("files/ctt-input.txt",Ctt_input),
 	Ctt_input=[From_lang,To_lang,String1],
 	split_string2(String1,["\n","\r"],List1),
@@ -102,11 +102,19 @@ bash_command(Command, Output) :-
         close(Out)).
 
 /*
-translate_ctt2("Hello.","en","fr","Bonjour.").
-translate_ctt2("Bonjour.","fr","en","Hello.").
+
+translate_ctt2("Hello.","en","fr","Bonjoura.").
+translate_ctt2("Bonjoura.","fr","en","Hellok.").
+
+translate_ctt2("Helloa.","en","fr","Bonjour.").
+translate_ctt2("Bonjour.","fr","en","Helloaa.").
 
 translate_ctt2("Helloc.","en","fr","Hellod.").
-translate_ctt2("Hellod.","fr","en","Helloc.").
+translate_ctt2("Hellod.","fr","en","Helloca.").
+
+translate_ctt2("Hellocc.","en","fr","Hellodc.").
+translate_ctt2("Hellodc.","fr","en","Hellocca.").
+
 */
 
 translate_ctt2(Input,FromLang,ToLang,Output3) :-
@@ -140,8 +148,9 @@ back_translate([],Ctt_orig1_orig2,Ctt_orig_tran,_From_lang,_To_lang,Translation,
 	
 	back_translate(Ctt_input,Ctt_orig1_orig2,Ctt_orig_tran,From_lang,To_lang,Translation1,Translation2,Ctt_orig1_orig2_1,Ctt_orig1_orig2_2,Ctt_orig_tran_1,Ctt_orig_tran_2) :-
 	
-	Ctt_input=[Ctt_input1|Ctt_input2],
-	
+	Ctt_input=[Ctt_input1a|Ctt_input2],
+	remove_spaces_from_start(Ctt_input1a,"",Ctt_input1),
+
 	back_translate2(Ctt_input1,Ctt_input1,Ctt_orig1_orig2,Ctt_orig_tran,From_lang,To_lang,Translation3,Ctt_orig1_orig2_3,Ctt_orig_tran_3),
 	
 	concat_list([Translation1,Translation3," "],Translation4),
@@ -171,7 +180,7 @@ remove_spaces_from_start(A,B,D) :-
 	remove_spaces_from_start(Ctt_input1a,"",Ctt_input1),
 
 
-	(((Ctt_input1="\n"->true;Ctt_input1="\r"),
+	(((Ctt_input1="\n"->true;(Ctt_input1="\r"->true;Ctt_input1="")),
 	Translation3=Ctt_input1,
 	%(string_concat(Translation1,Ctt_input1,Translation3),
 	Ctt_orig1_orig2=Ctt_orig1_orig2_1,Ctt_orig_tran=Ctt_orig_tran_1)->true;
@@ -179,19 +188,36 @@ remove_spaces_from_start(A,B,D) :-
 	
 	((member([From_lang,To_lang,Ctt_input1,Ctt_orig1_orig2_11],Ctt_orig1_orig2),
 	member([From_lang,To_lang,Ctt_orig1_orig2_11,Translation3],Ctt_orig_tran),
-	Ctt_orig1_orig2=Ctt_orig1_orig2_1,Ctt_orig_tran=Ctt_orig_tran_1)->true;
+	%Ctt_orig1_orig2=Ctt_orig1_orig2_1,Ctt_orig_tran=Ctt_orig_tran_1
+	
+			append_if_needed(Ctt_orig1_orig2,[[From_lang,To_lang,Ctt_input0,%*** not earlier % here too
+		Ctt_orig1_orig2_11]],Ctt_orig1_orig2_1),
+	append_if_needed(Ctt_orig_tran,[[From_lang,To_lang,Ctt_orig1_orig2_11, % here too
+	Translation3]],Ctt_orig_tran_1)
+
+)->true;
 	
 	
 	((member([From_lang,To_lang,Ctt_input1,Translation3],Ctt_orig_tran),Ctt_orig1_orig2=Ctt_orig1_orig2_1,Ctt_orig_tran=Ctt_orig_tran_1)->true;
 	
 		((member([From_lang,To_lang,Ctt_input1,Ctt_orig1_orig2_11],Ctt_orig1_orig2),
 	not(member([From_lang,To_lang,Ctt_orig1_orig2_11,Translation3],Ctt_orig_tran)),
-	translate_ctt2(Ctt_orig1_orig2_11,% or ctinput
-	From_lang,To_lang,Translation3),
-	translate_ctt2(Translation3,% or ctinput
-	To_lang,From_lang,Ctt_orig1_orig2_11),
-	append(Ctt_orig_tran,[[From_lang,To_lang,Ctt_orig1_orig2_11, % here too
-	Translation3]],Ctt_orig_tran_1)
+	
+	%translate_ctt2(Ctt_orig1_orig2_11,% or ctinput
+	%From_lang,To_lang,Translation3),
+	%translate_ctt2(Translation3,% or ctinput
+	%To_lang,From_lang,Ctt_orig1_orig2_11),
+	%trace,
+	((back_translate_and_check(Ctt_input0,Ctt_orig1_orig2_11,% or ctinput
+From_lang,To_lang,Translation3),
+
+	append_if_needed(Ctt_orig_tran,[[From_lang,To_lang,Ctt_orig1_orig2_11, % here too
+	Translation3]],Ctt_orig_tran_1),%trace,
+	Ctt_orig1_orig2=Ctt_orig1_orig2_1)->true;
+	
+		fail
+		%check_similar_sentences(Ctt_input0,Ctt_orig1_orig2,Ctt_orig_tran,From_lang,To_lang,Translation3,Ctt_orig1_orig2_1,Ctt_orig_tran_1) 
+)
 
 	)->true;
 	
@@ -200,31 +226,59 @@ remove_spaces_from_start(A,B,D) :-
 	
 	((not(member([From_lang,To_lang,Ctt_input1,Ctt_orig1_orig2_1],Ctt_orig1_orig2)),
 
-	((translate_ctt2(Ctt_input1,% or ctinput
-	From_lang,To_lang,Translation3),
-	translate_ctt2(Translation3,% or ctinput
-	To_lang,From_lang,Ctt_input1),
-	append(Ctt_orig_tran,[[From_lang,To_lang,Ctt_input1, % here too
-	Translation3]],Ctt_orig_tran_1))->true;
+	((
+	%translate_ctt2(Ctt_input1,% or ctinput
+	%From_lang,To_lang,Translation3),
+	%translate_ctt2(Translation3,% or ctinput
+	%To_lang,From_lang,Ctt_input1),
+	
+		back_translate_and_check(Ctt_input0,Ctt_input1,% or ctinput
+From_lang,To_lang,Translation3),
 
+	append_if_needed(Ctt_orig_tran,[[From_lang,To_lang,Ctt_input1, % here too
+	Translation3]],Ctt_orig_tran_1),
+	Ctt_orig1_orig2=Ctt_orig1_orig2_1)->true;
+	check_similar_sentences(Ctt_input0,Ctt_orig1_orig2,Ctt_orig_tran,From_lang,To_lang,Translation3,Ctt_orig1_orig2_1,Ctt_orig_tran_1) 
+))))))))),
+
+!.
+
+check_similar_sentences(Ctt_input0,Ctt_orig1_orig2,Ctt_orig_tran,From_lang,To_lang,Translation3,Ctt_orig1_orig2_1,Ctt_orig_tran_1) :-
 	concat_list(["\n","Please enter a sentence with the same meaning as \"",Ctt_input0,"\", which can be more easily translated:"],Note1),	
 	writeln(Note1),
 	read_string(user_input,"\n\r","\n\r",_,Ctt_input1b),
 	
 		back_translate2(Ctt_input0,Ctt_input1b,Ctt_orig1_orig2,Ctt_orig_tran,From_lang,To_lang,Translation3,Ctt_orig1_orig2_2,Ctt_orig_tran_2),
 		
-		append(Ctt_orig1_orig2_2,[[From_lang,To_lang,Ctt_input0,%*** not earlier % here too
-		Ctt_input1b]],Ctt_orig1_orig2_1),
+		Ctt_orig1_orig2_2=Ctt_orig1_orig2_1,
+		Ctt_orig_tran_2=Ctt_orig_tran_1,
+		%append_if_needed(Ctt_orig1_orig2_2,[[From_lang,To_lang,Ctt_input0,%*** not earlier % here too
+	%	Ctt_input1b]],Ctt_orig1_orig2_1),
 
 
-	append(Ctt_orig_tran_2,[[From_lang,To_lang,Ctt_input1b, % here too
-	Translation3]],Ctt_orig_tran_1)
+	%append_if_needed(Ctt_orig_tran_2,[[From_lang,To_lang,Ctt_input1b, % here too
+	%Translation3]],Ctt_orig_tran_1),
+	!.
 
 
-))))))))),
-					
+back_translate_and_check(Ctt_input0,Ctt_orig1_orig2_11,% or ctinput
+From_lang,To_lang,Translation3) :-					
+	translate_ctt2(Ctt_orig1_orig2_11,% or ctinput
+	From_lang,To_lang,Translation31),
+	translate_ctt2(Translation31,% or ctinput
+	To_lang,From_lang,Ctt_orig1_orig2_12),
+	((Ctt_orig1_orig2_11=Ctt_orig1_orig2_12)->
+	Translation3=Translation31;
+	(concat_list(["\n","Are the following sentences:\n- grammatical\n- have the same meaning as the other in the pair, and\n- have the same meaning as the original sentence (y/n)?\n\n",
+	"Original:","\t",Ctt_input0,"\n\n",
+	"\t\t",Ctt_orig1_orig2_11,"\n\t\t",Ctt_orig1_orig2_12],Note1),
+	writeln(Note1),
+	read_string(user_input,"\n\r","\n\r",_,YN),
+	%repeat,
+	%trace,
+	(YN="n"->fail;Translation3=Translation31))),!.
 
-!.
+
 
 insertdoublebackslashbeforequote(Input1,Input) :-
 	string_codes(Input1,Input2),
@@ -241,3 +295,9 @@ insertdoublebackslashbeforequote1(Input1,Input2,Input3) :-
 	not(Input4=39), %% quote
 	append(Input2,[Input4],Input6),
 	insertdoublebackslashbeforequote1(Input5,Input6,Input3), !.
+
+append_if_needed(A,[B],C) :-
+%trace,
+	(member(B,A)->C=A;
+	append(A,[B],C))%,notrace
+	,!.
