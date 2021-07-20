@@ -5,11 +5,11 @@
 	ctt-input.txt
 ["en","fr","Helloa."]
 
-	ctt-orig-tran.txt
-[["en","fr","Hellow.","Bonjour."]]
-
 	ctt-orig1-orig2.txt
 [["en","fr","Helloa.","Hellow."]]
+
+	ctt-orig-tran.txt
+[["en","fr","Hellow.","Bonjour."]]
 
 	ctt-output.txt
 ["en","fr","Bonjour. "]
