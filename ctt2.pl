@@ -161,7 +161,7 @@ back_translate([],Ctt_orig1_orig2,Ctt_orig_tran,_From_lang,_To_lang,Translation,
 	back_translate2(Ctt_input1,Ctt_input1,Ctt_orig1_orig2,Ctt_orig_tran,From_lang,To_lang,Translation3,Ctt_orig1_orig2_3,Ctt_orig_tran_3),
 	
 	concat_list([Translation1,Translation3," "],Translation4),
-		back_translate(Ctt_input2,Ctt_orig1_orig2_3,Ctt_orig_tran_3,From_lang,To_lang,Translation4,Translation2,[],Ctt_orig1_orig2_2,[],Ctt_orig_tran_2),!.
+		back_translate(Ctt_input2,Ctt_orig1_orig2_3,Ctt_orig_tran_3,From_lang,To_lang,Translation4,Translation2,Ctt_orig1_orig2_1,Ctt_orig1_orig2_2,Ctt_orig_tran_1,Ctt_orig_tran_2),!.
 
 	
 	
