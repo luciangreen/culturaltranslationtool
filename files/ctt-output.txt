@@ -1,1 +1,1 @@
-["en","fr","Bonjour. Bonjour. Bonjour. "]
+["en","fr","J'ai obtenu la haute distinction. "]

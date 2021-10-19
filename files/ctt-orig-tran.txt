@@ -1,1 +1,1 @@
-[["en","fr","Hellob.","Bonjour."],["en","fr","Hellow.","Bonjoura."],["en","fr","Helloc.","Hellod."],["en","de","Hellob.","Bonjour."],["en","de","Hellow.","Bonjoura."],["en","de","Helloc.","Hellod."],["en","fr","Helloa.","Bonjour."],["en","fr","Hellocc.","Hellodc."]]
+[["en","fr","I earned the high distinction.","J'ai obtenu la haute distinction."]]
