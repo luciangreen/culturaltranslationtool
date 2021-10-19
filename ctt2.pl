@@ -255,9 +255,11 @@ check_similar_sentences(Ctt_input0,Ctt_orig1_orig2,Ctt_orig_tran,From_lang,To_la
 	writeln(Note1),
 	read_string(user_input,"\n\r","\n\r",_,Ctt_input1b),
 	
-		back_translate2(Ctt_input0,Ctt_input1b,Ctt_orig1_orig2,Ctt_orig_tran,From_lang,To_lang,Translation3,Ctt_orig1_orig2_2,Ctt_orig_tran_2),
+		%trace,
+		back_translate2(Ctt_input0,Ctt_input1b,Ctt_orig1_orig2,Ctt_orig_tran,From_lang,To_lang,Translation3,_Ctt_orig1_orig2_2,Ctt_orig_tran_2),
 		
-		Ctt_orig1_orig2_2=Ctt_orig1_orig2_1,
+		%Ctt_orig1_orig2_2=Ctt_orig1_orig2_1,
+		Ctt_orig1_orig2_1=[[From_lang,To_lang,Ctt_input0,Ctt_input1b]],
 		Ctt_orig_tran_2=Ctt_orig_tran_1,
 		%append_if_needed(Ctt_orig1_orig2_2,[[From_lang,To_lang,Ctt_input0,%*** not earlier % here too
 	%	Ctt_input1b]],Ctt_orig1_orig2_1),
