@@ -33,7 +33,7 @@ render orig wo tags x
 %:-include('../Prolog-to-List-Prolog/p2lpconverter.pl').
 :-include('../List-Prolog-to-Prolog-Converter/lp2pconverter.pl').
 :-include('../Philosophy/sub_term_with_address.pl').
-:-include('../Daily-Regimen/chatgpt_qa.pl').
+:-include('../Text-to-Breasonings/chatgpt_qa.pl').
 
 ctt3(Source,Dest,_Orig_lang,Dest_lang) :-
 (exists_file_s(Source)->

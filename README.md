@@ -1,7 +1,7 @@
 # Cultural Translation Tool (CTT)
 
 * CTT allows translating folders and files of text and Prolog files from one language to another. It is used only with files without filenames as strings in Prolog, so if you are translating an algorithm, use it with individual files that contain the text from your algorithm.
-* Requires ChatGPT API key (from the ChatGPT website) in `Daily-Regimen/chatgpt_qa_key.txt`.
+* Requires ChatGPT API key (from the ChatGPT website) in `Text-to-Breasonings/chatgpt_qa_key.txt`.
 
 # Prerequisites
 
