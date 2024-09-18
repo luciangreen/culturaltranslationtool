@@ -2,7 +2,7 @@
 %% Instructions at top of file1.txt to save and quit
 %% with path to load and save in
 
-:- include(library(edit)).
+:-include(library(edit)).
 :- multifile
 	edit:edit_command/2.
 :- multifile prolog_edit:load/0.

@@ -29,14 +29,14 @@ New Features
 use_module(library(pio)).
 use_module(library(dcg/basics)).
 
-%%:- include(library(edit)).
+%%:-include(library(edit)).
 %%:- use_module(library(edit)).
 %%:- multifile edit:edit_command/2.
 %%:- multifile prolog_edit:load/0.
 
 %% run with prolog_edit:ctt.
 
-%%:- include('edit.pl').
+%%:-include('edit.pl').
 
 ctt :-
 	cttInput('files/ctt-input.txt',CttInput1,FromLang,ToLang,Tokens2,_Tokens3,Tokens32),
