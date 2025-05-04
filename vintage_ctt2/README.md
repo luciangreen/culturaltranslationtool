@@ -11,7 +11,7 @@ NB. - Because of a limitation in Google Translate, CTT only improves, not perfec
 
 # Prerequisites
 
-* Please download and install SWI-Prolog for your machine at `https://www.swi-prolog.org/build/`.
+* Use a search engine to find the Homebrew (or other) Terminal install command for your platform and install it, and search for the Terminal command to install swipl using Homebrew and install it or download and install SWI-Prolog for your machine at <a href="https://www.swi-prolog.org/build/">SWI-Prolog</a>.
 
 * You may need to install gawk using Homebrew.
 
@@ -22,6 +22,32 @@ culturaltranslationtool/ctt2.pl
 trans_location("../../../gawk/trans").
 ```
 to correct location of <a href="https://github.com/soimort/translate-shell">trans</a>.
+
+# Mac, Linux and Windows (with Linux commands installed): Prepare to run swipl
+
+* In Terminal settings (Mac), make Bash the default shell:
+
+```
+/bin/bash
+```
+
+* In Terminal, edit the text file `~/.bashrc` using the text editor Nano:
+
+```
+nano ~/.bashrc
+```
+
+* Add the following to the file `~/.bashrc`:
+
+```
+export PATH="$PATH:/opt/homebrew/bin/"
+```
+
+* Link to swipl in Terminal:
+
+```
+sudo ln -s /opt/homebrew/bin/swipl /usr/local/bin/swipl
+```
 
 # 1. Install manually
 
