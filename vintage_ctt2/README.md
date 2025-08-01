@@ -43,7 +43,19 @@ nano ~/.bashrc
 export PATH="$PATH:/opt/homebrew/bin/"
 ```
 
-* Link to swipl in Terminal:
+* Check if `usr/local/bin` exists
+
+```
+ls -ld /usr/local/bin
+```
+
+* Create the directory if missing
+
+```
+sudo mkdir -p /usr/local/bin
+```
+
+* Link to swipl in Terminal
 
 ```
 sudo ln -s /opt/homebrew/bin/swipl /usr/local/bin/swipl
